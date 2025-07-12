@@ -1,22 +1,27 @@
-"use client";
 
 import { useRouter } from "next/navigation";
 import { Button } from "./button";
 
-export const Appbar = () => {
-  const router = useRouter();
+interface AppbarProps {
+    user?: {
+        name?: string | null;
+    },
+    // TODO: can u figure out what the type should be here?
+    onSignin: any,
+    onSignout: any
+}
 
-  return (
-    <header className="flex items-center justify-between px-8 py-4 border-b shadow-md bg-white sticky top-0 z-50">
-  <div className="text-4xl">
-    Paytm
-  </div>
-
-  <Button
-    onClick={() => router.push("/api/auth/signin")}
-  >Login
-  </Button>
-</header>
-
-  );
-};
+export const Appbar = ({
+    user,
+    onSignin,
+    onSignout
+}: AppbarProps) => {
+    return <div className="flex justify-between border-b px-4 border-slate-300">
+        <div className="text-lg flex flex-col justify-center">
+            PayTM
+        </div>
+        <div className="flex flex-col justify-center pt-2">
+            <Button onClick={user ? onSignout : onSignin}>{user ? "Logout" : "Login"}</Button>
+        </div>
+    </div>
+}
