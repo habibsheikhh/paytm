@@ -1,9 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import { Providers } from "./providers";
+import { Inter } from "next/font/google";
+import { AppbarClient } from "../components/AppbarClient";
 
-const geist = Geist({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
@@ -18,7 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-        <body className={geist.className}>{children}</body>
+        <body className={inter.className}>
+          <div className="min-w-screen min-h-screen bg-[#ebe6e6]">
+            <AppbarClient />
+            {children}
+          </div>
+        </body>
       </Providers>
     </html>
   );

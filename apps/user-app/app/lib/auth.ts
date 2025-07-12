@@ -2,7 +2,7 @@
 
 import {prisma} from "@repo/db/client";
 import CredentialsProvider from "next-auth/providers/credentials"
-import bcrypt from "bcrypt";
+import bcrypt from 'bcryptjs'
 
 const db = prisma
 
