@@ -19,11 +19,11 @@ const SUPPORTED_BANKS = [{
     redirectUrl: "https://www.axisbank.com/"
 }];
 
-export const  AddMoney = async () => {
+export const  AddMoney = () => {
     const [redirectUrl, setRedirectUrl] = useState(SUPPORTED_BANKS[0]?.redirectUrl);
     const [amount, setAmount] = useState(0)
     const [provider, setProvider] = useState(SUPPORTED_BANKS[0]?.name || "")
-    const session = await getServerSession(authOptions);
+    const session =  getServerSession(authOptions);
     return <Card title="Add Money">
     <div className="w-full">
         <TextInput label={"Amount"} placeholder={"Amount"} onChange={(value) => {
@@ -42,8 +42,8 @@ export const  AddMoney = async () => {
         <div className="flex justify-center pt-4">
             <Button
             onClick={async () => {
-                await createOnRampTxn(amount, provider)
                 window.location.href = redirectUrl || "";
+                await createOnRampTxn(amount, provider)
             }}
             >
             Add Money

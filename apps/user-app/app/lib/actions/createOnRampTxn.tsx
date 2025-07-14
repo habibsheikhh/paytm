@@ -5,7 +5,7 @@ import { authOptions } from "../auth"
 import {prisma} from "@repo/db/client"
 
 
-export const createOnRampTxn = async (amount: number, provider: string) => {
+export  const  createOnRampTxn  =  async(amount: number, provider: string) => {
     const session = await getServerSession(authOptions)
     const userId = session.user.id
     const token = Math.random().toString() // In real , token will come from bamk api
