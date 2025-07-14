@@ -8,6 +8,8 @@ on:
   pull_request:
     branches:
       - master
+      - branch1
+      - main
 
 jobs:
   build:
