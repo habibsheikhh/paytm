@@ -15,7 +15,7 @@ COPY packages ./packages
 RUN npm install
 
 # Generate Prisma client — yes, this should ideally be a script in package.json
-RUN npm run generate-prisma
+RUN npm run db:generate
  
 # Build only one specific app (e.g., user-app)
 RUN npm run build --filter=user-app
